@@ -14,3 +14,4 @@ Second project to learn and get familiar with JavaScript ES6 syntax.
 * Document Object Manipulation
 * Using api's
 * Query Selectors
+* AJAX method
