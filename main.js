@@ -9,6 +9,41 @@ form.addEventListener("submit", e => {
   e.preventDefault();
   let inputVal = input.value;
 
+  //if statement that check's if theres already a city
+  const listItems = list.querySelectorAll(".ajax-section .city");
+  const listItemsArray = Array.from(listItems);
+
+  if (listItemsArray.length > 0) {
+    const filteredArray = listItemsArray.filter(el => {
+      let content = "";
+      //athens,gr
+      if (inputVal.includes(",")) {
+        //athens,grrrrrr->invalid country code, so we keep only the first part of inputVal
+        if (inputVal.split(",")[1].length > 2) {
+          inputVal = inputVal.split(",")[0];
+          content = el
+            .querySelector(".city-name span")
+            .textContent.toLowerCase();
+        } else {
+          content = el.querySelector(".city-name").dataset.name.toLowerCase();
+        }
+      } else {
+        //athens
+        content = el.querySelector(".city-name span").textContent.toLowerCase();
+      }
+      return content == inputVal.toLowerCase();
+    });
+
+    if (filteredArray.length > 0) {
+      msg.textContent = `The weather for  ${
+        filteredArray[0].querySelector(".city-name span").textContent
+      } is already in the list ~ try a country code.`;
+      form.reset();
+      input.focus();
+      return;
+    }
+  }
+
   //ajax here
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`;
 
