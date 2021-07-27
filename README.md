@@ -2,7 +2,7 @@
 
 ---
 
-Second project to learn and get familiar with JavaScript ES6 syntax.
+Followed a tutorial guide to re-learn AJAX and integrating API's
 
 
 ###### Languages used:
@@ -15,3 +15,4 @@ Second project to learn and get familiar with JavaScript ES6 syntax.
 * Using api's
 * Query Selectors
 * AJAX method
+*
